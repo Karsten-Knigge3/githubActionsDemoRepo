@@ -1,0 +1,46 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout Code
+          uses: actions/checkout@v4
+        
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20'
+
+        - name: Install Dependencies
+          run: npm ci
+
+        - name: Run Tests
+          run: npm test
+
+        - name: Build Application
+          run: npm run build
+
+
+
+      # TODO 1: Code auschecken
+      # Tipp: Nutze actions/checkout@v4
+
+      # TODO 2: Node.js installieren (Version 20)
+      # Tipp: Nutze actions/setup-node@v4
+
+      # TODO 3: Dependencies installieren
+      # Tipp: Nutze npm ci (nicht npm install!)
+
+      # TODO 4: Tests ausführen
+      # Tipp: Nutze npm test
+
+      # TODO 5: Build erstellen
+      # Tipp: Nutze npm run build
